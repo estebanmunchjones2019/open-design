@@ -208,6 +208,16 @@ OPENAI_BASE_URL=https://llm-gateway.example.internal/openai
 CODEX_API_KEY=sk-…   # or OPENAI_API_KEY, both are accepted
 ```
 
+The Linux Compose override forwards these three variables into the daemon
+container. After editing `.env`, recreate the service and verify the resolved
+container environment (without printing secrets):
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.linux.yml up -d --no-build
+docker compose -f docker-compose.yml -f docker-compose.linux.yml exec open-design \
+  sh -lc 'test -n "$ANTHROPIC_BASE_URL" || test -n "$OPENAI_BASE_URL"'
+```
+
 Both variables are daemon-recognized, allow-listed CLI environment overrides
 (`apps/daemon/src/app-config.ts`, `AGENT_CLI_ENV_KEYS`) — the CLI itself has
 no other route to a public endpoint once `*_BASE_URL` is set, so all traffic
