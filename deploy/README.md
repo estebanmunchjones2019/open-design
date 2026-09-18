@@ -100,12 +100,15 @@ that installs `opencode-ai` directly into the container:
 
 ```dockerfile
 FROM ghcr.io/nexu-io/od:latest
+USER root
 RUN npm install -g opencode-ai
+RUN opencode --version
+USER open-design
 ```
 
 The daemon resolves these runtimes by checking `OPENCODE_BIN` first, then
 falling back to `opencode-cli` or `opencode` on `PATH`. Either expose the
-binary on `PATH` (the default location for a global npm install already is)
+binary on `PATH` (a global npm install puts it there by default)
 or set the env var explicitly:
 
 ```bash
