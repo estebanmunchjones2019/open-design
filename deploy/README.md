@@ -193,6 +193,8 @@ OPENAI_API_KEY=sk-…
 
 ### Routing an agent CLI through a private/self-hosted LLM gateway
 
+For Linux deployments, add the applicable settings below to `deploy/.env`.
+
 Enterprises that cannot call the public Anthropic or OpenAI APIs (only an
 internal LiteLLM-style proxy, Azure-hosted deployment, or other OpenAI/
 Anthropic-compatible gateway) can redirect the `claude` and `codex` agent
