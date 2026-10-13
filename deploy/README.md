@@ -94,6 +94,8 @@ deployment needs local code-agent CLIs installed in the container.
 
 ## Standalone OpenCode: self-contained image layer
 
+<!-- Keep this standalone option separate from the Vela/AMR setup below. -->
+
 For a headless deployment that only needs the `opencode` or `byok-opencode`
 runtimes, you can skip host mounts entirely by building a custom image layer
 that installs `opencode-ai` directly into the container:
